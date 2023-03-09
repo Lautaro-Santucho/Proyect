@@ -5,6 +5,8 @@
 
     {% for post  in posts %}
 
+    <head> <title>Categoria</title> </head>
+
     <section class="page-section clearfix">
         <div class="container">
           <div class="intro">
@@ -27,19 +29,19 @@
     <section>
         <div style="text-align: center; width: 70%; margin: auto; color: white;">
 
-    Categorias: 
+          Categorias: 
 
-    {% for post  in posts %}
-
-      {% for cats in post.cates.all %}
-
-        {{cats.nombre}}
-
-      {% endfor %}
-
-    {% endfor %}
-
-        </div>
-    </section>
-
-{% endblock %}
+          {% for post  in posts %}
+      
+            {% for cats in post.cates.all %}
+      
+              {{cats.nombre}}&nbsp;&nbsp;&nbsp;
+      
+            {% endfor %}
+      
+          {% endfor %}
+      
+              </div>
+          </section>
+      
+      {% endblock %}

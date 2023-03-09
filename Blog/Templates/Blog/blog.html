@@ -3,6 +3,8 @@
 
 {% block content %}
 
+  <head> <title>Categoria</title> </head>
+
     {% for post  in posts %}
 
     <section class="page-section clearfix">
@@ -33,7 +35,7 @@
 
       {% for cats in post.cates.all %}
 
-        <a href="{% url 'categoria' cats.id %}">{{cats.nombre}}</a> &nbsp;&nbsp;&nbsp;
+        <a href="{% url 'categoria' cats.id %}" class="categoriaLink">{{cats.nombre}}</a> &nbsp;&nbsp;&nbsp;
 
       {% endfor %}
 
