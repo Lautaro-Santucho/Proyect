@@ -3,6 +3,16 @@
 
 {% block content %}
 
-    <div><p> </p></div>
+    <div class="emailContacto">
+        <form action="" method="POST">{% csrf_token %}
+
+            <table style="color: white; margin: 10px auto;"> 
+                {{miFormulario.as_table}}
+            </table>
+            <input type="submit" value="Enviar" style="width: 140;">
+
+        </form>
+    </div>
+
 
 {% endblock %}
