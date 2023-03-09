@@ -280,5 +280,9 @@ ul.errorlist{
 
 .categoriaLink{
   color: whitesmoke !important;
+  text-decoration: underline;
+}
 
+.categoriaLink:hover{
+  text-decoration: none;
 }
