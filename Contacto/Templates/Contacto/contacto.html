@@ -3,10 +3,16 @@
 
 {% block content %}
 
+<head><title>Contactanos</title></head>
+
     <div class="emailContacto">
 
     {% if "correcto" in request.GET %}
         <p style="color: white;">Se ha enviado con exito</p>
+    {% endif %}
+
+    {% if "incorrecto" in request.GET %}
+        <p style="color: red;">Ha habido un problema en el envio del correo, intente de nuevo</p>
     {% endif %}
 
         <form action="" method="POST">{% csrf_token %}

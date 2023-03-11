@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Servicios',
     'Blog',
     'Contacto',
+    'Tienda',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,14 @@ STATIC_URL = 'static/'
 MEDIA_URL= '/media/'
 MEDIA_ROOT= BASE_DIR / 'media'
 
+#Configuracion de correo electronico
+
+EMAIL_BACKEND= "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST= "smtp.gmail.com"
+EMAIL_USE_TLS= True
+EMAIL_PORT= 587
+EMAIL_HOST_USER= "santucholautaro437@gmail.com"
+EMAIL_HOST_PASSWORD= "a y c s w n l e c l x a b d w u"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
