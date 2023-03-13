@@ -3,6 +3,26 @@
 
 {% block content %}
 
-    <div><p style="color: aliceblue;"> Funciona </p></div>
+<div class="container">
+    <div class="row">
+{% for prod in productos %}
+    <div class="col-md-3">
+
+        <div class="card" style="margin: 5px 5px;">
+
+            <img src="{{prod.imagen.url}}" class="card-img-top">
+
+            <div class="card-body" style="text-align: center;">
+                <h6 class="card-title">{{prod.nombre}}</h6>
+                <p class="card-text">{{prod.precio}} ARS</p>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+    </div>
+</div>
 
 {% endblock %}
+
+

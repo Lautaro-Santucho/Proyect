@@ -11,8 +11,8 @@ class categoriaProducto(models.Model):
         verbose_name="categoriaProducto"
         verbose_name_plural="categoriaProductos"
 
-        def __str__(self):
-            return self.nombre
+    def __str__(self):
+        return self.nombre
 
 class Producto(models.Model):
     nombre= models.CharField(max_length=50)
