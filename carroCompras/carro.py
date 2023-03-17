@@ -5,8 +5,8 @@ class Carro:
         carro= self.session.get("carro")
         if not carro:
             carro= self.session["carro"]= {}
-        else:
-            self.carro=carro
+        #else:
+        self.carro=carro
 
     def agergarProducto(self, producto):
         if(str(producto.id) not in self.carro.keys()):
@@ -21,6 +21,7 @@ class Carro:
             for keys, values in self.carro.items():
                 if keys == str(producto.id):
                     values["cantidad"]= values["cantidad"]+1
+                    values["precio"]= values["precio"]+producto.precio
                     break
         self.guardarCambios()
             
@@ -28,19 +29,20 @@ class Carro:
         self.session["carro"]=self.carro
         self.session.modified=True
 
+    def eliminar(self, producto):
+        producto.id=str(producto.id)
+        if producto.id in self.carro:
+            del self.carro[producto.id]
+        self.guardarCambios()
+
     def restarProducto(self, producto):
         for keys, values in self.carro.items():
                 if keys == str(producto.id):
                     values["cantidad"]= values["cantidad"]-1
+                    values["precio"]= values["precio"]-producto.precio
                     if values["cantidad"]<1:
-                        self.eliminar()
+                        self.eliminar(producto)
                     break
-        self.guardarCambios()
-
-    def eliminar(self, producto):
-        producto.id=str(producto.id)
-        if producto.id in self.carro:
-            del self.carro["producto.id"]
         self.guardarCambios()
 
     def limpiarCarro(self):
