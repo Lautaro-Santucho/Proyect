@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'Contacto',
     'Tienda',
     'carroCompras',
+    'Autenticacion',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +139,8 @@ EMAIL_USE_TLS= True
 EMAIL_PORT= 587
 EMAIL_HOST_USER= "santucholautaro437@gmail.com"
 EMAIL_HOST_PASSWORD= "a y c s w n l e c l x a b d w u"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
