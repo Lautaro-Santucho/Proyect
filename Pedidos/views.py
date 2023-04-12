@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.core.mail import send_mail
 
 from Pedidos.models import Pedidos, lineaPedidos
 from carroCompras.carro import Carro
@@ -26,13 +29,24 @@ def procesar_pedido(request):
 
     enviar_mail(
         pedido=pedido,
-        linea_pedid=lineas_pedido,
-        username=request.username,
-        usermail=request.usermail
+        linea_pedido=lineas_pedido,
+        user_name=request.user.username,
+        user_mail=request.user.email
     )
     messages.success(request, "El pedido se ha procesado con exito")
 
     return redirect("../tienda")
 
-def enviar_mail(request):
-    pass
+def enviar_mail(**kwargs):
+    asunto= "Gracias por su compra"
+    mensaje= render_to_string("email/pedido.html", {
+        "pedido": kwargs.get("pedido"),
+        "linea_pedido": kwargs.get("linea_pedido"),
+        "nombre_usuario": kwargs.get("user_name")       
+    })
+
+    mensaje_texto= strip_tags(mensaje) #quita las etiquetas html "<>"
+    from_email= "santucholautaro437@gmail.com"
+    to= kwargs.get("user_mail")
+    send_mail(asunto, mensaje_texto, from_email, [to], html_message=mensaje)
+

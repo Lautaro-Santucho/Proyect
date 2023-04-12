@@ -30,13 +30,13 @@ class Pedidos(models.Model):
 
 class lineaPedidos(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
-    producto_id= models.ForeignKey(Producto, on_delete=models.CASCADE)
-    pedidos_id= models.ForeignKey(Pedidos, on_delete=models.CASCADE)
+    producto= models.ForeignKey(Producto, on_delete=models.CASCADE)
+    pedidos= models.ForeignKey(Pedidos, on_delete=models.CASCADE)
     cantidad= models.IntegerField(default=1)
     created_at= models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Producto: {self.producto_id.nombre} Cantidad: {self.cantidad}"
+        return f"Producto: {self.producto.nombre} Cantidad: {self.cantidad}"
     
     class Meta:
         db_table= "lineaPedidos"
